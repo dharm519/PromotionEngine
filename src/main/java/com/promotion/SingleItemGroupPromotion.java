@@ -2,6 +2,7 @@ package com.promotion;
 
 import com.model.Cart;
 import com.model.CartItem;
+import com.util.PriceList;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -57,6 +58,6 @@ public class SingleItemGroupPromotion implements IPromotion{
 
     @Override
     public Double getDiscountedPrice() {
-        return null;
+        return (PriceList.getPrice(appliedItem) * this.quota) - this.promotedPrice;
     }
 }

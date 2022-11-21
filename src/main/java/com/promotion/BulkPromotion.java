@@ -2,6 +2,7 @@ package com.promotion;
 
 import com.model.Cart;
 import com.model.CartItem;
+import com.util.PriceList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,6 +56,10 @@ public class BulkPromotion implements IPromotion{
 
     @Override
     public Double getDiscountedPrice() {
-        return null;
+        double itemPrice = 0.0;
+        for(String sku: appliedItems)
+            itemPrice += PriceList.getPrice(sku);
+
+        return itemPrice - this.promotedPrice;
     }
 }
